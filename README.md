@@ -1,0 +1,1 @@
+Collection of examples for this course in JavaScript

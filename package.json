@@ -1,0 +1,24 @@
+{
+  "name": "data-structures-ucsd",
+  "version": "1.0.0",
+  "description": "Collection of examples for this course in JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zilula/data-structures-ucsd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zilula/data-structures-ucsd/issues"
+  },
+  "homepage": "https://github.com/Zilula/data-structures-ucsd#readme",
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2"
+  }
+}

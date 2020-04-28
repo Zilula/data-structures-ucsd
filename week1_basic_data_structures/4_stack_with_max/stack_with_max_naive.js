@@ -16,7 +16,7 @@ class Stack {
     const data = {};
     const head = this.top();
 
-    if (this.isEmpty()) {
+    if (!head) {
       data.value = ele;
       data.max = ele;
     } else {
@@ -29,14 +29,6 @@ class Stack {
 
   pop() {
     this.list.pop();
-  }
-
-  max() {
-    return this.top().max;
-  }
-
-  isEmpty() {
-    return this.list.length === 0;
   }
 
   top() {
@@ -52,18 +44,22 @@ class Stack {
 const stack = new Stack();
 
 
-rl.on('line', (line) => {
-  // DO SOMETHING
-  const args = line.split(' ');
-  if (args[0] === 'push') {
-    stack.push(args[1]);
-  }
-  if (args[0] === 'pop') {
-    stack.pop();
-  }
-  if (args[0] === 'max') {
-    console.log(stack.max());
-  }
+rl.once('line', (n) => {
+  const numCmd = n;
+
+  rl.on('line', (line) => {
+    // DO SOMETHING
+    const args = line.split(' ');
+    if (args[0] === 'push') {
+      stack.push(Number(args[1]));
+    }
+    if (args[0] === 'pop') {
+      stack.pop();
+    }
+    if (args[0] === 'max') {
+      console.log(stack.top().max);
+    }
+  });
 });
 
 

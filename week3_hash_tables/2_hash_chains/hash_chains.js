@@ -64,7 +64,7 @@ class HashMap {
       }
       return this.map[`${hash}`] ? (x ? 'yes' : 'no') : 'no';
     }
-    return 'no';
+    return 'no'
   }
 
   check(hash) {

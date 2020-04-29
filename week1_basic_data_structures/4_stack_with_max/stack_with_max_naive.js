@@ -44,9 +44,7 @@ class Stack {
 const stack = new Stack();
 
 
-rl.once('line', (n) => {
-  const numCmd = n;
-
+rl.once('line', () => {
   rl.on('line', (line) => {
     // DO SOMETHING
     const args = line.split(' ');

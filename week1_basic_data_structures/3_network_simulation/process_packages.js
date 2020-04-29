@@ -39,20 +39,13 @@ const processPackets = (packetData, bufferSize) => {
 
     // If the processing time is 0 it can be instantly removed
     // from the queue because it requires no time/effort/thread/worker etc...
-    if (packet.processingTime === 0) {
-      Q.push(packet);
-      console.log(Q.time === 0 ? packetData[0].arrivalTime : Q.time);
-      Q.shift(Q.time === 0 ? packetData[0].arrivalTime : Q.time);
-      break;
-    }
-
-
-    // Check if the queue is at max capacity
     if (Q.list.length === bufferSize) {
+    // Check if the queue is at max capacity
       console.log(-1);
-      break;
+    } else {
+    // Push item to the queue
+      Q.push(packet);
     }
-    Q.push(packet);
   }
 
   // While there are items in the queue,

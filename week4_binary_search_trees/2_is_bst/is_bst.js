@@ -61,15 +61,16 @@ const T = new BinarySearchTree();
 
 rl.once('line', (n) => {
   const numNodes = Number(n.toString());
-  if (n === 0) {
+  if (numNodes === 0) {
     console.log('CORRECT');
     process.exit();
   }
   rl.on('line', (l) => {
     const [key, left, right] = l.split(' ');
-    const node = new Node(key, left, right);
+    const node = new Node(key, left === '-1' ? null : left, right === '-1' ? null : right);
 
     T.insert(node);
+
     if (numNodes === T.list.length) {
       const res = T.checkBS(T.root);
       res ? console.log(res) : console.log('CORRECT');

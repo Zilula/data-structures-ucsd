@@ -21,6 +21,7 @@ class BinarySearchTree {
   constructor() {
     this.list = [];
     this.root = null;
+    this.nodes = [];
   }
 
 
@@ -31,19 +32,41 @@ class BinarySearchTree {
     this.list.push(node);
   }
 
-  checkBS(node) {
-    const left = this.list[node.left];
-    const right = this.list[node.right];
-    if (!node) return 'CORRECT';
+  checkBS() {
+    // const left = this.list[node.left];
+    // const right = this.list[node.right];
 
-    if (left && left.key > node.key) {
-      return 'INCORRECT';
+
+    // // Check to see if the binary search properties are maintained
+
+    // // Checks to see if the left child is greater then than then parent node
+    // // and returns 'INCORRECT' because it violates the BST property
+    // if (left && left.key > node.key) {
+    //   return 'INCORRECT';
+    // }
+    // // Checks to see if the right child is less than the parent node
+    // // and returns 'INCORRECT' because it violates the BST property
+    // if (right && right.key < node.key) {
+    //   return 'INCORRECT';
+    // }
+
+    // if (left) this.checkBS(left);
+    // if (right) this.checkBS(right);
+
+
+    // return 'CORRECT';
+
+
+    // Call inorder traversal
+    this.inOrder(this.root);
+
+
+    for (let i = 0; i < this.nodes.length; i += 1) {
+      if (this.nodes[i] < this.nodes[i - 1]) {
+        return 'INCORRECT';
+      }
     }
-    if (right && right.key < node.key) {
-      return 'INCORRECT';
-    }
-    if (left) this.inOrder(left);
-    if (right) this.inOrder(right);
+    return 'CORRECT';
   }
 
   inOrder(node) {
@@ -51,6 +74,7 @@ class BinarySearchTree {
     const right = this.list[node.right];
     if (!node) return false;
     if (left) this.inOrder(left);
+    this.nodes.push(node.key);
     if (right) this.inOrder(right);
   }
 }
@@ -65,15 +89,16 @@ rl.once('line', (n) => {
     console.log('CORRECT');
     process.exit();
   }
+
   rl.on('line', (l) => {
     const [key, left, right] = l.split(' ');
-    const node = new Node(key, left === '-1' ? null : left, right === '-1' ? null : right);
+    const node = new Node(Number(key), left === '-1' ? null : Number(left), right === '-1' ? null : Number(right));
 
     T.insert(node);
 
     if (numNodes === T.list.length) {
       const res = T.checkBS(T.root);
-      res ? console.log(res) : console.log('CORRECT');
+      console.log(res);
       process.exit();
     }
   });
